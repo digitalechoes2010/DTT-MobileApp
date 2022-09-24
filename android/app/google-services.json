@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "160352723148",
+    "project_id": "dtt-app-b4796",
+    "storage_bucket": "dtt-app-b4796.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:160352723148:android:1a24ec97b4391ca54ea269",
+        "android_client_info": {
+          "package_name": "com.dtt"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "160352723148-ni9hm8gtiqd2vcno05g3qqe1q7dkud97.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.dtt",
+            "certificate_hash": "aae1ac39635005bf48917e4b2e54cd27116e8e79"
+          }
+        },
+        {
+          "client_id": "160352723148-7n9ui60j25nfhtbbol1ikhc2uf5jnaop.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDnfE5TjwHI8byfV9eNMNz76Az2j24WjOs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "160352723148-7n9ui60j25nfhtbbol1ikhc2uf5jnaop.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
