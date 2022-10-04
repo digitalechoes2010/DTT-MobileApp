@@ -15,19 +15,15 @@ import {useTranslation} from 'react-i18next';
 function CustomDrawer({theme, setLight, setDark, reduxValues, doLogout}:any) {
 
   const {t} = useTranslation();
-  
-  const [darkMode, setDarkMode] = React.useState(false);
 
   const [visible, setVisible] = React.useState(false);
 
   const toggleFunction = () => {
     if(theme === true) {
       setDark();
-      setDarkMode(true);
     }
     else {
       setLight();
-      setDarkMode(false);
     }
   };
 
@@ -99,12 +95,16 @@ function CustomDrawer({theme, setLight, setDark, reduxValues, doLogout}:any) {
             </View>
           </View>
           <Drawer.Section style={styles.drawerSection}>
-          <Text style={[styles.preferenceTitle, {color: theme === true ? lightColors.txtColor : darkColors.txtColor}]}>Preferences</Text>
-          <View style={styles.preference}>
+            <Text style={[styles.preferenceTitle, {color: theme === true ? lightColors.txtColor : darkColors.txtColor}]}>Preferences</Text>
+            <View style={styles.preference}>
               <Text style={[styles.preferenceTxt, {color: theme === true ? lightColors.txtColor : darkColors.txtColor}]}>Dark Theme</Text>
               <Switch
-                value={darkMode}
-                onValueChange={toggleFunction} 
+                trackColor={{false: '#AAA', true: '#CBCBCB'}}
+                thumbColor={theme ? '#CBCBCB' : '#AE1614'}
+                ios_backgroundColor="#3e3e3e"
+                value={theme}
+                onValueChange={toggleFunction}
+                style={{transform: [{rotate: '180deg'}]}}
               />
             </View>
           </Drawer.Section>

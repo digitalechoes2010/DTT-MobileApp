@@ -36,6 +36,7 @@ export default StyleSheet.create({
     marginBottom: 30,
   },
   inputPasswordStyle: {
+    height: 50,
     fontSize: 14, 
     color: '#000000',
     paddingHorizontal: 15,

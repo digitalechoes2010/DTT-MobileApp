@@ -18,8 +18,8 @@ const TraderType = ({navigation, theme}: any) => {
   };
 
   return (
-    <SafeAreaView style={[styles.contentPage, {backgroundColor: theme === true ? lightColors.bgColor : darkColors.bgColor}]}>
-      <ScrollView showsVerticalScrollIndicator={false}>
+    <SafeAreaView>
+      <ScrollView style={[styles.contentPage, {backgroundColor: theme === true ? lightColors.bgColor : darkColors.bgColor}]} showsVerticalScrollIndicator={false}>
         <TouchableOpacity onPress={goBack} style={styles.backIcon}>
           <Ionicons name="arrow-back" color={theme === true ? lightColors.txtColor : darkColors.txtColor} size={24} />
         </TouchableOpacity>

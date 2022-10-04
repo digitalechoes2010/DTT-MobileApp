@@ -51,7 +51,45 @@ const Login = ({navigation, theme, language, doLogin}: any) => {
   async function requestPermissions() {
     if (Platform.OS === 'ios') {
       const auth = await Geolocation.requestAuthorization("whenInUse");
-      if(auth === "granted") {}
+      if(auth === "granted") {
+        Geolocation.getCurrentPosition(
+          (position) => {
+            setLatitude(position.coords.latitude);
+            setLongitude(position.coords.longitude);
+            console.log("Position:", position);
+            Geocoder.from(position.coords.latitude, position.coords.longitude)
+            .then(async json => { 
+              var countryCode = json.results[0].address_components[4].short_name;
+              var country = json.results[0].address_components[4].long_name;
+              var city = json.results[0].address_components[1].long_name;
+              console.log("Country", country, "City", city);
+              navigation.navigate('RegisterStepOne', {country: country, city: city, countryCode: countryCode});
+              setTimeout(() => {
+                setIsLoadingSecond(false);
+              }, 1000);
+            })
+            .catch(err => {
+              console.log('Error:', err);
+              Alert.alert(
+                t('unidentifiedLocation'),
+                t('countryCityManually'),
+                [{text: t('closeTxt')}],
+                {cancelable: false},
+              );
+              setTimeout(() => {
+                setIsLoadingSecond(false);
+              }, 1000);
+            });
+          },
+          (error) => {
+            setError(error.message)
+            console.log("Location Access Denied");
+            setIsLoadingSecond(false);
+            navigation.navigate('RegisterStepOne', {country: '', city: '', countryCode: 'AE'});
+          },
+          {enableHighAccuracy: false, timeout: 10000, maximumAge: 100000}
+        );
+      }
     }
     if (Platform.OS === 'android') {
       await PermissionsAndroid.request(

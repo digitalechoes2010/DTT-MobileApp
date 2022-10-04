@@ -1,7 +1,7 @@
 /* eslint-disable prettier/prettier */
 /* eslint-disable react-native/no-inline-styles */
 import React from 'react';
-import {SafeAreaView, ImageBackground, Image, Text, View, TouchableOpacity} from 'react-native';
+import {SafeAreaView, ImageBackground, Image, Text, View, TouchableOpacity, Dimensions} from 'react-native';
 import * as Animatable from 'react-native-animatable';
 import {images} from '../../constants';
 import styles from './LanguageSelectorStyle';
@@ -13,6 +13,9 @@ import {useTranslation} from 'react-i18next';
 const LanguageSelector = ({navigation, language, makeEnglish, makeArabic, makeEspanol}: any) => {
   
   const {i18n} = useTranslation();
+  
+  const {width} = Dimensions.get('window');
+  const {height} = Dimensions.get('window');
 
   const transEnglish = () => {
     i18n
@@ -49,7 +52,7 @@ const LanguageSelector = ({navigation, language, makeEnglish, makeArabic, makeEs
 
   return (
     <SafeAreaView>
-      <ImageBackground style={styles.backgroundImage} source={images.backgroundImage} resizeMode="cover">
+      <ImageBackground style={{width: width, height: height}} source={images.backgroundImage} resizeMode="cover">
         <View style={styles.content}>
           <Image style={styles.appLogo} source={images.fullDTTLogo} resizeMode="contain" />
           <View style={styles.actionView}>

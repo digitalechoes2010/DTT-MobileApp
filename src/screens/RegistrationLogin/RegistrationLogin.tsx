@@ -1,6 +1,6 @@
 /* eslint-disable prettier/prettier */
 import React from 'react';
-import {SafeAreaView, ImageBackground, Image, Text, View, TouchableOpacity, Platform, PermissionsAndroid, ActivityIndicator, Alert} from 'react-native';
+import {SafeAreaView, ImageBackground, Image, Text, View, TouchableOpacity, Dimensions, Platform, PermissionsAndroid, ActivityIndicator, Alert} from 'react-native';
 import * as Animatable from 'react-native-animatable';
 import {images} from '../../constants';
 import styles from './RegistrationLoginStyle';
@@ -11,6 +11,9 @@ import Geocoder from 'react-native-geocoding';
 const RegistrationLogin = ({navigation}: {navigation: any}) => {
 
   const {t} = useTranslation();
+  
+  const {width} = Dimensions.get('window');
+  const {height} = Dimensions.get('window');
   
   interface ILocation {
     latitude: number;
@@ -26,7 +29,45 @@ const RegistrationLogin = ({navigation}: {navigation: any}) => {
   async function requestPermissions() {
     if (Platform.OS === 'ios') {
       const auth = await Geolocation.requestAuthorization("whenInUse");
-      if(auth === "granted") {}
+      if(auth === "granted") {
+        Geolocation.getCurrentPosition(
+          (position) => {
+            setLatitude(position.coords.latitude);
+            setLongitude(position.coords.longitude);
+            console.log("Position:", position);
+            Geocoder.from(position.coords.latitude, position.coords.longitude)
+            .then(async json => { 
+              var countryCode = json.results[0].address_components[4].short_name;
+              var country = json.results[0].address_components[4].long_name;
+              var city = json.results[0].address_components[1].long_name;
+              console.log("Country", country, "City", city);
+              navigation.navigate('RegisterStepOne', {country: country, city: city, countryCode: countryCode});
+              setTimeout(() => {
+                setIsLoading(false);
+              }, 1000);
+            })
+            .catch(err => {
+              console.log('Error:', err);
+              Alert.alert(
+                t('unidentifiedLocation'),
+                t('countryCityManually'),
+                [{text: t('closeTxt')}],
+                {cancelable: false},
+              );
+              setTimeout(() => {
+                setIsLoading(false);
+              }, 1000);
+            });
+          },
+          (error) => {
+            setError(error.message)
+            console.log("Location Access Denied");
+            setIsLoading(false);
+            navigation.navigate('RegisterStepOne', {country: '', city: '', countryCode: 'AE'});
+          },
+          {enableHighAccuracy: false, timeout: 10000, maximumAge: 100000}
+        );
+      }
     }
     if (Platform.OS === 'android') {
       await PermissionsAndroid.request(
@@ -76,7 +117,7 @@ const RegistrationLogin = ({navigation}: {navigation: any}) => {
 
   return (
     <SafeAreaView>
-      <ImageBackground style={styles.backgroundImage} source={images.backgroundImage} resizeMode="cover">
+      <ImageBackground style={{width: width, height: height}} source={images.backgroundImage} resizeMode="cover">
         <View style={styles.content}>
           <Image style={styles.appLogo} source={images.fullDTTLogo} resizeMode="contain" />
           <View style={styles.actionView}>

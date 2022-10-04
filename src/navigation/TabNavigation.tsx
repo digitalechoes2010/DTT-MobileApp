@@ -1,4 +1,5 @@
 import * as React from 'react';
+import {Platform} from 'react-native';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import Entypo from 'react-native-vector-icons/Entypo';
@@ -25,7 +26,7 @@ const TabNavigation = (theme:any) => {
         tabBarHideOnKeyboard: true,
         tabBarActiveTintColor: '#AE1614',
         tabBarInactiveTintColor: '#AAA',
-        tabBarStyle: {height: 60, borderTopLeftRadius: 25, borderTopRightRadius: 25,
+        tabBarStyle: {height: Platform.OS === 'ios' ? 80 : 60, borderTopLeftRadius: 25, borderTopRightRadius: 25,
         backgroundColor: theme.theme === true ? lightColors.tabBgColor : darkColors.tabBgColor,
         position:'absolute', bottom: 0},
         tabBarIcon: ({ focused }) => {

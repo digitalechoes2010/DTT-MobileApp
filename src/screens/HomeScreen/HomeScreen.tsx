@@ -1,7 +1,7 @@
 /* eslint-disable prettier/prettier */
 /* eslint-disable react-native/no-inline-styles */
 import React from 'react';
-import {SafeAreaView, ScrollView, Image, View, Text, Dimensions, Animated} from 'react-native';
+import {SafeAreaView, ScrollView, Image, View, Text, Dimensions, Platform, Animated} from 'react-native';
 import {createMaterialTopTabNavigator} from '@react-navigation/material-top-tabs';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
@@ -80,7 +80,7 @@ const HomeScreen = ({navigation, theme, reduxValues}: any) => {
 
   function renderHeader() {
     return (
-      <View style={[styles.bannerImage, {marginBottom: 20, width: width - 30}]}>
+      <View style={[styles.bannerImage, {marginBottom: 20, width: Platform.OS === 'ios' ? width : width -30}]}>
       <ScrollView
         horizontal
         showsHorizontalScrollIndicator={false}
@@ -94,7 +94,7 @@ const HomeScreen = ({navigation, theme, reduxValues}: any) => {
           <Image
             key={index}
             source={{uri: bannerUrl}}
-            style={[styles.bannerImage, {marginBottom: 20, width: width - 30, resizeMode: 'cover'}]}
+            style={[styles.bannerImage, {marginBottom: 20, width: Platform.OS === 'ios' ? width : width -30, resizeMode: 'cover'}]}
           />
         ))}
       </ScrollView>

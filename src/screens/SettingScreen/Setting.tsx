@@ -5,6 +5,7 @@ import {SafeAreaView, Text, View, TouchableOpacity, Modal, Animated} from 'react
 import * as Animatable from 'react-native-animatable';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import styles from './SettingStyle';
+import countryCodes from '../../constants/countriesCodes';
 import {lightColors, darkColors} from '../../colormode/ColorMode';
 import {connect} from 'react-redux';
 import {setLight, setDark} from '../../store/Actions/themeActionCreator';
@@ -16,7 +17,14 @@ const Setting = ({navigation, theme, reduxValues, doLogout}: any) => {
   const {t} = useTranslation();
 
   const [visible, setVisible] = React.useState(false);
-
+  
+  let diallingCode = '';
+  countryCodes.map((countryCodeDial: any) => {
+    if(countryCodeDial.country === reduxValues.userData.user.country)
+        return diallingCode = countryCodeDial.isoCode2;
+    return diallingCode;
+  })
+  
   const ModalPopup = ({visible, children}:any) => {
     const [showModal, setShowModal] = React.useState(visible);
     const scaleValue = React.useRef(new Animated.Value(0)).current;
@@ -91,7 +99,7 @@ const Setting = ({navigation, theme, reduxValues, doLogout}: any) => {
             direction="alternate">
             <TouchableOpacity
               style={styles.actionBtnView}
-              onPress={() => {navigation.navigate('AccountDetailStack'); }}>
+              onPress={() => {navigation.navigate('AccountDetailStack', {countryCode: diallingCode}); }}>
               <Text style={styles.actionTxtBtn}>{t('accountDetails')}{' '}</Text>
             </TouchableOpacity>
           </Animatable.View>

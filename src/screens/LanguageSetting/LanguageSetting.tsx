@@ -76,7 +76,7 @@ const LanguageSetting = ({navigation, theme, language, makeEnglish, makeArabic, 
             <TouchableOpacity
               style={[styles.actionBtn, {backgroundColor: language === 'en' ? '#AE1614' : '#E6E6E6'}]}
               onPress={() => {transEnglish()}}>
-              <Text style={styles.actionTxtBtn}>English</Text>
+              <Text style={[styles.actionTxtBtn, {color: language === 'en' ? '#FFFFFF' : '#000000'}]}>English</Text>
             </TouchableOpacity>
           </Animatable.View>
           <Animatable.View
@@ -87,7 +87,7 @@ const LanguageSetting = ({navigation, theme, language, makeEnglish, makeArabic, 
             <TouchableOpacity
               style={[styles.actionBtn, {backgroundColor: language === 'ar' ? '#AE1614' : '#E6E6E6'}]}
               onPress={() => {transArabic()}}>
-              <Text style={styles.actionTxtBtn}>Arabic</Text>
+              <Text style={[styles.actionTxtBtn, {color: language === 'ar' ? '#FFFFFF' : '#000000'}]}>Arabic</Text>
             </TouchableOpacity>
           </Animatable.View>
           <Animatable.View
@@ -98,7 +98,7 @@ const LanguageSetting = ({navigation, theme, language, makeEnglish, makeArabic, 
             <TouchableOpacity
               style={[styles.actionBtn, {backgroundColor: language === 'sp' ? '#AE1614' : '#E6E6E6'}]}
               onPress={() => {transEspanol()}}>
-              <Text style={styles.actionTxtBtn}>Español</Text>
+              <Text style={[styles.actionTxtBtn, {color: language === 'sp' ? '#FFFFFF' : '#000000'}]}>Español</Text>
             </TouchableOpacity>
           </Animatable.View>
         </View>

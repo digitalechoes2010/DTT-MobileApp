@@ -95,8 +95,8 @@ const RegisterStepTwo = ({navigation, theme, language, route}: any) => {
       }, 1000);
       return;
     }
-    console.log("RR", route.params.country);
-    console.log("VV", route.params.city);
+    console.log("Country", route.params.country);
+    console.log("City", route.params.city);
     setIsLoading(true);
     registerFunction(values);
   }

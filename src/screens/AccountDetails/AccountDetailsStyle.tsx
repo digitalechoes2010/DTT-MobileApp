@@ -39,6 +39,7 @@ export default StyleSheet.create({
     fontWeight: '500',
   },
   inputStyle: {
+    height: 50,
     fontSize: 14, 
     color: '#000000',
     paddingHorizontal: 15,

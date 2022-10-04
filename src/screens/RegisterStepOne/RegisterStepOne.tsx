@@ -50,7 +50,7 @@ const RegisterStepOne = ({navigation, theme, language, route}: any) => {
   const [selectedCity, setSelectedCity] = React.useState(route.params.city);
   const availableCity = countryCityData.countries.find((c) => c.name === selectedCountry);
 
-  {console.log("::LL", selectedCountryCode)}
+  {console.log("Country Code", selectedCountryCode)}
   
   return (
     <SafeAreaView style={[styles.contentPage, {backgroundColor: theme === true ? lightColors.bgColor : darkColors.bgColor}]}>
@@ -88,7 +88,7 @@ const RegisterStepOne = ({navigation, theme, language, route}: any) => {
                   </View>
                 </Animatable.View>
                 <Animatable.View
-                    animation="fadeIn"
+                  animation="fadeIn"
                   iterationDelay={1000}>
                   <View style={styles.inputView}>
                     <Text style={[styles.inputLabel, {color: theme === true ? lightColors.txtColor : darkColors.txtColor}]}>{t('phoneNumber')}{' '}</Text>
@@ -109,7 +109,7 @@ const RegisterStepOne = ({navigation, theme, language, route}: any) => {
                   </View>
                 </Animatable.View>
                 <Animatable.View
-               animation="fadeIn"
+                  animation="fadeIn"
                   iterationDelay={1500}>
                   <View style={styles.inputView}>
                     <Text style={[styles.inputLabel, {color: theme === true ? lightColors.txtColor : darkColors.txtColor}]}>{t('country')}{' '}</Text>
@@ -117,7 +117,8 @@ const RegisterStepOne = ({navigation, theme, language, route}: any) => {
                       <Picker
                         selectedValue={selectedCountry}
                         onValueChange={(selectedCountry) => setSelectedCountry(selectedCountry)}
-                        dropdownIconColor={'#000000'}>
+                        dropdownIconColor={'#000000'}
+                        itemStyle={{height: 50, fontSize: 14}}>
                         <Picker.Item label='Select an item' value='' color='#AAA'/>
                         {countryCityData.countries.map((country, key) => {
                           return (
@@ -137,7 +138,8 @@ const RegisterStepOne = ({navigation, theme, language, route}: any) => {
                       <Picker
                         selectedValue={selectedCity}
                         onValueChange={(selectedCity) => setSelectedCity(selectedCity)}
-                        dropdownIconColor={'#000000'}>
+                        dropdownIconColor={'#000000'}
+                        itemStyle={{height: 50, fontSize: 14}}>
                         <Picker.Item label='Select an item' value='' color='#AAA' />
                         {availableCity?.cities.map((city, key) => {
                           return (

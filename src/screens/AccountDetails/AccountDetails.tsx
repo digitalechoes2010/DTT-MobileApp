@@ -17,7 +17,7 @@ import {Formik} from 'formik';
 import axios from 'axios';
 import {updateUserRequest} from '../../store/Actions/userActionCreator';
 
-const AccountDetails = ({navigation, theme, reduxValues, reduxUserValues, doLogout}: any) => {
+const AccountDetails = ({navigation, theme, route, reduxValues, reduxUserValues, doLogout}: any) => {
 
   const {t} = useTranslation();
   
@@ -26,7 +26,7 @@ const AccountDetails = ({navigation, theme, reduxValues, reduxUserValues, doLogo
   };
 
   const [isLoading, setIsLoading] = React.useState(false);
-
+  
   React.useEffect(() => {
     if(reduxValues.isLoggedIn == true)
       console.log("Account Details:",
@@ -72,8 +72,6 @@ const AccountDetails = ({navigation, theme, reduxValues, reduxUserValues, doLogo
     }, 1000);
   };
 
-  {console.log("EE", reduxUserValues)}
-
   return (
     <SafeAreaView style={[styles.contentPage, {backgroundColor: theme === true ? lightColors.bgColor : darkColors.bgColor}]}>
       <View style={styles.upperTab}>
@@ -105,7 +103,7 @@ const AccountDetails = ({navigation, theme, reduxValues, reduxUserValues, doLogo
               <View style={styles.inputView}>
                 <PhoneInput
                   ref={phoneInput}
-                  defaultCode="AE"
+                  defaultCode={route.params.countryCode}
                   layout="first"
                   placeholder=" "
                   value={values.phone}
@@ -120,7 +118,8 @@ const AccountDetails = ({navigation, theme, reduxValues, reduxUserValues, doLogo
                 <Picker
                   selectedValue={userType}
                   onValueChange={(userType) => setUserType(userType)}
-                  dropdownIconColor={'#000000'}>
+                  dropdownIconColor={'#000000'}
+                  itemStyle={{height: 50, fontSize: 14}}>
                   <Picker.Item label={'Beginner'} value={'Beginner'} />
                   <Picker.Item label={'Experienced'} value={'Experienced'} />
                 </Picker>
