@@ -1,7 +1,7 @@
 /* eslint-disable prettier/prettier */
 /* eslint-disable react-native/no-inline-styles */
 import React from 'react';
-import {ScrollView, SafeAreaView, Text, View, TouchableOpacity} from 'react-native';
+import {SafeAreaView, Text, View, TouchableOpacity} from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import styles from './TraderTypeStyle';
 import {lightColors, darkColors} from '../../colormode/ColorMode';
@@ -19,7 +19,7 @@ const TraderType = ({navigation, theme}: any) => {
 
   return (
     <SafeAreaView>
-      <ScrollView style={[styles.contentPage, {backgroundColor: theme === true ? lightColors.bgColor : darkColors.bgColor}]} showsVerticalScrollIndicator={false}>
+      <View style={[styles.contentPage, {backgroundColor: theme === true ? lightColors.bgColor : darkColors.bgColor}]}>
         <TouchableOpacity onPress={goBack} style={styles.backIcon}>
           <Ionicons name="arrow-back" color={theme === true ? lightColors.txtColor : darkColors.txtColor} size={24} />
         </TouchableOpacity>
@@ -41,7 +41,7 @@ const TraderType = ({navigation, theme}: any) => {
             <Text style={styles.actionTxtBtn}>{t('experiencedButton')}{' '}</Text>
           </TouchableOpacity>
         </View>
-      </ScrollView>
+      </View>
     </SafeAreaView>
   );
   

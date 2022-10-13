@@ -28,12 +28,14 @@ export default StyleSheet.create({
     fontWeight: '500',
     marginBottom: 10,
   },
+  inputView: {
+    marginBottom: 20,
+  },
   inputPasswordView: {
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
     borderRadius: 30,
-    marginBottom: 30,
   },
   inputPasswordStyle: {
     height: 50,

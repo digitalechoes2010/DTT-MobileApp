@@ -20,7 +20,7 @@ import DrawerNavigator from './DrawerNavigation';
 export default function MainNavigation() {
 
   React.useEffect(() => {
-    SplashScreen.hide();
+    setTimeout(() => {SplashScreen.hide();}, 2500);
   }, []);
 
   const Stack = createStackNavigator();

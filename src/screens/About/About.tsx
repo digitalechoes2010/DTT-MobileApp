@@ -15,22 +15,24 @@ const About = ({navigation, theme}: any) => {
   const {t} = useTranslation();
 
   return (
-    <SafeAreaView style={[styles.contentPage, {backgroundColor: theme === true ? lightColors.bgColor : darkColors.bgColor}]}>
-      <Text style={[styles.pageTitle, {color: theme === true ? lightColors.txtColor : darkColors.txtColor}]}>{t('aboutTitle')}{' '}</Text>
-      <View style={styles.videoPlayer}>
-        <Ionicons name="play-circle-outline" color={'#AE1614'} size={96} />
+    <SafeAreaView>
+      <View style={[styles.contentPage, {backgroundColor: theme === true ? lightColors.bgColor : darkColors.bgColor}]}>
+        <Text style={[styles.pageTitle, {color: theme === true ? lightColors.txtColor : darkColors.txtColor}]}>{t('aboutTitle')}{' '}</Text>
+        <View style={styles.videoPlayer}>
+          <Ionicons name="play-circle-outline" color={'#AE1614'} size={96} />
+        </View>
+        <Animatable.View
+          animation="bounceInDown"
+          iterationCount={1}
+          iterationDelay={500}
+          direction="alternate">
+          <TouchableOpacity 
+            style={styles.actionBtn}
+            onPress={() => navigation.navigate('TradingAccount')}>
+            <Text style={styles.actionTxtBtn}>Select Menu</Text>
+          </TouchableOpacity>
+        </Animatable.View>
       </View>
-      <Animatable.View
-        animation="bounceInDown"
-        iterationCount={1}
-        iterationDelay={500}
-        direction="alternate">
-        <TouchableOpacity 
-          style={styles.actionBtn}
-          onPress={() => navigation.navigate('TradingAccount')}>
-          <Text style={styles.actionTxtBtn}>Select Menu</Text>
-        </TouchableOpacity>
-      </Animatable.View>
     </SafeAreaView>
   );
 

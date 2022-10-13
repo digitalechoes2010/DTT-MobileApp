@@ -3,6 +3,8 @@
 #import <React/RCTBridge.h>
 #import <React/RCTBundleURLProvider.h>
 #import <React/RCTRootView.h>
+#import "RNSplashScreen.h"
+#import "DTT-Swift.h"
 
 #ifdef FB_SONARKIT_ENABLED
 #import <FlipperKit/FlipperClient.h>
@@ -47,6 +49,21 @@ static void InitializeFlipper(UIApplication *application) {
   rootViewController.view = rootView;
   self.window.rootViewController = rootViewController;
   [self.window makeKeyAndVisible];
+  
+  Dynamic *t = [Dynamic new];
+  
+  UIView *animationUIView = (UIView *)[t createAnimationViewWithRootView:rootView lottieName:@"loading"];
+  
+  animationUIView.backgroundColor = [UIColor whiteColor];
+
+  [RNSplashScreen showLottieSplash:animationUIView inRootView:rootView];
+
+  AnimationView *animationView = (AnimationView *) animationUIView;
+
+  [t playWithAnimationView:animationView];
+
+  [RNSplashScreen setAnimationFinished:true];
+  
   return YES;
 }
 

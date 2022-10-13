@@ -34,6 +34,6 @@ export default StyleSheet.create({
   actionTxtBtn: {
     fontWeight: '500',
     fontSize: 14,
-    color: '#000000',
+    color: '#FFFFFF',
   },
 });

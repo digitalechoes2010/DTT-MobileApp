@@ -136,48 +136,58 @@ const ChangePassword = ({navigation, theme, reduxValues}: any) => {
            validationSchema={changePasswordSchema}>
           {({handleChange, handleSubmit, values, touched, errors}) => (
             <>
-              <View style={styles.inputView}>
-                <View style={[styles.inputPasswordView, {backgroundColor: theme === true ? lightColors.bgInput : darkColors.bgInput}]}>
-                  <TextInput
-                    style={[styles.inputPasswordStyle, {backgroundColor: theme === true ? lightColors.bgInput : darkColors.bgInput}]}
-                    placeholder="New Password"
-                    placeholderTextColor="#AAA"
-                    autoCapitalize="none"
-                    value={values.password}
-                    onChangeText={handleChange('password')}
-                    secureTextEntry={newPasswordVisibility}
-                  />
-                  <TouchableOpacity
-                    style={styles.passwordIcon}
-                    onPress={handleNewPasswordVisibility}>
-                    <Ionicons name={rightNewPasswordIcon} size={24} color="#AE1614" />
-                  </TouchableOpacity>
+              <Animatable.View
+                animation="fadeIn"
+                iterationDelay={500}>
+                <View style={styles.inputView}>
+                  <View style={[styles.inputPasswordView, {backgroundColor: theme === true ? lightColors.bgInput : darkColors.bgInput}]}>
+                    <TextInput
+                      style={[styles.inputPasswordStyle, {backgroundColor: theme === true ? lightColors.bgInput : darkColors.bgInput}]}
+                      placeholder="New Password"
+                      placeholderTextColor="#AAA"
+                      autoCapitalize="none"
+                      value={values.password}
+                      onChangeText={handleChange('password')}
+                      secureTextEntry={newPasswordVisibility}
+                    />
+                    <TouchableOpacity
+                      style={styles.passwordIcon}
+                      onPress={handleNewPasswordVisibility}>
+                      <Ionicons name={rightNewPasswordIcon} size={24} color="#AE1614" />
+                    </TouchableOpacity>
+                  </View>
+                  {(errors.password && touched.password) &&
+                  <Text style={styles.errorMsg}>{errors.password}</Text>}
                 </View>
-                {(errors.password && touched.password) &&
-                <Text style={styles.errorMsg}>{errors.password}</Text>}
-                <View style={[styles.inputPasswordView, {backgroundColor: theme === true ? lightColors.bgInput : darkColors.bgInput}]}>
-                  <TextInput
-                    style={[styles.inputPasswordStyle, {backgroundColor: theme === true ? lightColors.bgInput : darkColors.bgInput}]}
-                    placeholder="Confirm Password"
-                    placeholderTextColor="#AAA"
-                    autoCapitalize="none"
-                    value={values.confirmPassword}
-                    onChangeText={handleChange('confirmPassword')}
-                    secureTextEntry={confirmPasswordVisibility}
-                  />
-                  <TouchableOpacity
-                    style={styles.passwordIcon}
-                    onPress={handleConfirmPasswordVisibility}>
-                    <Ionicons name={rightConfirmPasswordIcon} size={24} color="#AE1614" />
-                  </TouchableOpacity>
+              </Animatable.View>
+              <Animatable.View
+                animation="fadeIn"
+                iterationDelay={1000}>
+                <View style={styles.inputView}>
+                  <View style={[styles.inputPasswordView, {backgroundColor: theme === true ? lightColors.bgInput : darkColors.bgInput}]}>
+                    <TextInput
+                      style={[styles.inputPasswordStyle, {backgroundColor: theme === true ? lightColors.bgInput : darkColors.bgInput}]}
+                      placeholder="Confirm Password"
+                      placeholderTextColor="#AAA"
+                      autoCapitalize="none"
+                      value={values.confirmPassword}
+                      onChangeText={handleChange('confirmPassword')}
+                      secureTextEntry={confirmPasswordVisibility}
+                    />
+                    <TouchableOpacity
+                      style={styles.passwordIcon}
+                      onPress={handleConfirmPasswordVisibility}>
+                      <Ionicons name={rightConfirmPasswordIcon} size={24} color="#AE1614" />
+                    </TouchableOpacity>
+                  </View>
+                  {(errors.confirmPassword && touched.confirmPassword) &&
+                  <Text style={styles.errorMsg}>{errors.confirmPassword}</Text>}
                 </View>
-                {(errors.confirmPassword && touched.confirmPassword) &&
-                <Text style={styles.errorMsg}>{errors.confirmPassword}</Text>}
-              </View>
+              </Animatable.View>
               <Animatable.View
                 animation="bounceInDown"
                 iterationCount={1}
-                iterationDelay={250}
+                iterationDelay={1500}
                 direction="alternate">
                 <TouchableOpacity
                     style={styles.actionBtn}
