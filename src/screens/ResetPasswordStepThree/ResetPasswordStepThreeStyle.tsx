@@ -67,6 +67,7 @@ export default StyleSheet.create({
     padding: 10,
     borderRadius: 30,
     alignItems: 'center',
+    marginTop: 30,
   },
   actionTxtBtn: {
     fontWeight: '500',

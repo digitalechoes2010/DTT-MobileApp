@@ -87,7 +87,7 @@ function CustomDrawer({theme, setLight, setDark, reduxValues, doLogout}:any) {
         <View style={styles.flexContent}>
           <View style={styles.userInfoSection}>
             <View style={styles.avatarPart}>
-              <Avatar.Image source={images.avatarImage} size={50} />
+              <Avatar.Image source={images.backgroundImage} size={50} />
               <View style={styles.avatarInfo}>
                 <Title style={[styles.title, {color: theme === true ? lightColors.txtColor : darkColors.txtColor}]}>{reduxValues.userData.user.fullname}</Title>
                 <Caption style={[styles.caption, {color: theme === true ? lightColors.txtColor : darkColors.txtColor}]}>{reduxValues.userData.user.type}</Caption>

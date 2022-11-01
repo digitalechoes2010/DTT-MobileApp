@@ -29,8 +29,8 @@ const Login = ({navigation, theme, language, doLogin}: any) => {
   const [isLoadingSecond, setIsLoadingSecond] = React.useState(false);
 
   const loginValidationSchema = yup.object().shape({
-    identifier: yup.string().email(t('validEmail')),
-    password: yup.string().min(8, ({min}) => t('minimumPassword'))
+    identifier: yup.string().email(t('validEmail')).required(t('requiredEmail')),
+    password: yup.string().min(8, ({min}) => t('minimumPassword')).required(t('requiredPassword'))
   });
 
   const emailValidation = (value:any) => {
