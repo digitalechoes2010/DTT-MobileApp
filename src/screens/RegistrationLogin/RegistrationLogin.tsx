@@ -67,6 +67,10 @@ const RegistrationLogin = ({navigation}: {navigation: any}) => {
           },
           {enableHighAccuracy: false, timeout: 10000, maximumAge: 100000}
         );
+      } else {
+        console.log("Location Access Denied");
+        setIsLoading(false);
+        navigation.navigate('RegisterStepOne', {country: '', city: '', countryCode: 'AE'});
       }
     }
     if (Platform.OS === 'android') {
@@ -111,6 +115,10 @@ const RegistrationLogin = ({navigation}: {navigation: any}) => {
           },
           {enableHighAccuracy: false, timeout: 10000, maximumAge: 100000}
         );
+      } else {
+        console.log("Location Access Denied");
+        setIsLoading(false);
+        navigation.navigate('RegisterStepOne', {country: '', city: '', countryCode: 'AE'});
       }
     }
   }
